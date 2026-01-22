@@ -3,135 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal HRD Digital | Sistem Absensi & Izin</title>
+    <title>Portal HRD Digital | Smart Office</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-        .navbar {
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f4f7fa; 
+            color: #2d3436;
         }
         .form-container {
-            max-width: 500px;
+            max-width: 600px;
             margin: 50px auto;
             background: #ffffff;
             padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
         }
-        .btn-primary {
-            background-color: #0d6efd;
-            border: none;
+        .header-section { 
+            border-bottom: 2px solid #f1f3f5; 
+            margin-bottom: 30px; 
+            padding-bottom: 20px; 
+        }
+        .form-label { 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            color: #636e72;
+            letter-spacing: 0.5px;
+        }
+        .input-group-text { 
+            background-color: #f8f9fa; 
+            border-right: none;
+            color: #b2bec3;
+        }
+        .form-control, .form-select { 
+            border-left: none;
             padding: 12px;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s;
         }
-        .btn-primary:hover {
-            background-color: #0b5ed7;
+        .form-control:focus, .form-select:focus {
+            box-shadow: none;
+            border-color: #dee2e6;
+        }
+        .btn-primary { 
+            padding: 14px; 
+            border-radius: 12px; 
+            font-weight: 600; 
+            background: #0984e3; 
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover { 
+            background: #074b83; 
             transform: translateY(-2px);
         }
-        .form-control, .form-select {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #dee2e6;
+        #groupLainnya {
+            animation: fadeIn 0.4s ease;
         }
-        .form-control:focus {
-            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
-        }
-        .header-icon {
-            font-size: 2.5rem;
-            color: #0d6efd;
-            margin-bottom: 20px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-light px-4">
-    <a class="navbar-brand fw-bold" href="#">
-        <i class="bi bi-building-fill-check me-2"></i> IT OFFICE SYSTEM
-    </a>
-</nav>
-
 <div class="container">
     <div class="form-container">
-        <div class="text-center">
-            <i class="bi bi-person-badge header-icon"></i>
-            <h3 class="fw-bold">Pengajuan Izin Digital</h3>
-            <p class="text-muted">Silakan lengkapi formulir di bawah ini untuk pendataan HRD otomatis.</p>
+        <div class="header-section text-center">
+            <div class="mb-3">
+                <i class="bi bi-shield-check-fill text-primary" style="font-size: 3rem;"></i>
+            </div>
+            <h3 class="fw-bold">Formulir HRD Digital</h3>
+            <p class="text-muted small">Silakan isi data pengajuan izin atau kerja remote Anda.</p>
         </div>
 
-        <form id="hrdForm" class="mt-4">
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Nama Lengkap</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-person"></i></span>
-                    <input type="text" name="Nama" class="form-control" placeholder="Contoh: Budi Santoso" required>
+        <form id="hrdForm">
+            <div class="row">
+                <div class="col-md-5 mb-3">
+                    <label class="form-label">Nomor ID Karyawan</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-card-heading"></i></span>
+                        <input type="text" name="ID_Karyawan" class="form-control" placeholder="ID-123" required>
+                    </div>
+                </div>
+                <div class="col-md-7 mb-3">
+                    <label class="form-label">Nama Lengkap</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input type="text" name="Nama" class="form-control" placeholder="Nama Anda" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Divisi</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
+                        <input type="text" name="Posisi" class="form-control" placeholder="Contoh: IT" required>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Tanggal Efektif</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+                        <input type="date" name="Tanggal" class="form-control" id="tanggalInput" required>
+                    </div>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label class="form-label fw-semibold">Jabatan / Divisi</label>
+                <label class="form-label">Kategori Keperluan</label>
                 <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
-                    <input type="text" name="Posisi" class="form-control" placeholder="Contoh: IT Support" required>
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label class="form-label fw-semibold">Alasan Keperluan</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-info-circle"></i></span>
-                    <select name="Alasan_Izin" class="form-select" required>
-                        <option value="" disabled selected>Pilih Alasan...</option>
-                        <option value="Sakit (Dengan Surat Dokter)">Sakit</option>
+                    <span class="input-group-text"><i class="bi bi-list-check"></i></span>
+                    <select name="Alasan_Izin" id="alasanSelect" class="form-select" required onchange="toggleLainnya()">
+                        <option value="" disabled selected>Pilih Keperluan...</option>
+                        <option value="Sakit">Sakit</option>
                         <option value="Cuti Tahunan">Cuti Tahunan</option>
-                        <option value="Izin Mendesak">Izin Mendesak</option>
-                        <option value="WFA / Remote">WFA (Kerja dari Mana Saja)</option>
+                        <option value="Work From Home">Work From Home</option>
+                        <option value="Lainnya">Lainnya...</option>
                     </select>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100" id="submitBtn">
+            <div class="mb-4" id="groupLainnya" style="display:none;">
+                <label class="form-label text-danger">Detail Alasan Lainnya</label>
+                <textarea name="Detail_Alasan" class="form-control" rows="3" style="border-left: 1px solid #dee2e6;" placeholder="Berikan penjelasan singkat..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-2" id="submitBtn">
                 <span id="btnText">Kirim Pengajuan</span>
             </button>
         </form>
     </div>
 </div>
 
-<footer class="text-center mt-4 text-muted small">
-    &copy; 2026 IT Department System. Powered by Linux & GitHub.
-</footer>
-
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxTyNqHQ3W7QXSdHKnX6-WYIM0PwNUnYAna9Da2Z0pZ-AU8KVpR0GOaYscI9AbNscaA8w/exec'; // GANTI DENGAN URL GOOGLE APPS SCRIPT ANDA
+    // MASUKKAN URL WEB APP GOOGLE SCRIPT ANDA DI SINI
+    const scriptURL = 'URL_WEB_APP_ANDA'; 
+    
     const form = document.getElementById('hrdForm');
     const btn = document.getElementById('submitBtn');
     const btnText = document.getElementById('btnText');
 
+    // Mengontrol muncul/tidaknya input 'Lainnya'
+    function toggleLainnya() {
+        const select = document.getElementById('alasanSelect');
+        const groupLainnya = document.getElementById('groupLainnya');
+        const textarea = groupLainnya.querySelector('textarea');
+        
+        if (select.value === "Lainnya") {
+            groupLainnya.style.display = "block";
+            textarea.required = true;
+        } else {
+            groupLainnya.style.display = "none";
+            textarea.required = false;
+        }
+    }
+
     form.addEventListener('submit', e => {
         e.preventDefault();
-        
-        // Animasi Loading
         btn.disabled = true;
-        btnText.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Mengirim...';
+        btnText.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Mengirim...';
 
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
-                alert("Berhasil! Pengajuan Anda telah tercatat di server.");
+                alert("Berhasil! Data ID " + form.ID_Karyawan.value + " sudah masuk ke database HRD.");
                 form.reset();
+                toggleLainnya();
             })
             .catch(error => {
-                alert("Terjadi kesalahan. Silakan hubungi IT.");
+                alert("Gagal terhubung ke server. Pastikan koneksi internet aktif.");
                 console.error('Error!', error.message);
             })
             .finally(() => {
